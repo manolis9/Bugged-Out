@@ -8,26 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-// Module
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var bug_module_1 = require('./bugs/bug.module');
-var app_component_1 = require('./app.component');
-var AppModule = (function () {
-    function AppModule() {
+var common_1 = require('@angular/common');
+var SharedModule = (function () {
+    function SharedModule() {
     }
-    AppModule = __decorate([
+    SharedModule = __decorate([
         core_1.NgModule({
-            imports: [
-                platform_browser_1.BrowserModule,
-                bug_module_1.BugModule
-            ],
-            declarations: [app_component_1.AppComponent],
-            bootstrap: [app_component_1.AppComponent]
+            imports: [common_1.CommonModule],
+            declarations: [],
+            exports: [common_1.CommonModule]
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], SharedModule);
+    return SharedModule;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.SharedModule = SharedModule;
+//# sourceMappingURL=shared.module.js.map
