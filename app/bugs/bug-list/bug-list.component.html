@@ -3,7 +3,7 @@
         <h1>Logged Bugs</h1>
     </div>
     <div class="col-xs-6 text-xs-right">
-        <button class="btn btn-success btn-lg"><i class="fa fa-plus" aria-hidden="true"></i>Add Bug</button>
+        <button class="btn btn-success btn-lg" [attr.data-target]=" '#' + bugDetail.modalId " data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i>Add Bug</button>
     </div>
 </div>
 <div class="row">
@@ -20,7 +20,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let bug of bugs">
+                <tr *ngFor="let bug of bugs" [attr.data-target]=" '#' + bugDetail.modalId " data-toggle="modal">
                     <td>{{ bug.title }}</td>
                     <td>{{ bug.status }}</td>
                     <td>{{ bug.severity }}</td>
@@ -32,4 +32,4 @@
         </table>
     </div>
 </div>
-<bug-detail></bug-detail>
+<bug-detail #bugDetail></bug-detail>
