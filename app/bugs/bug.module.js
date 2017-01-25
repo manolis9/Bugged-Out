@@ -14,6 +14,8 @@ var shared_module_1 = require('../shared/shared.module');
 var bug_routing_module_1 = require('./bug-routing.module');
 // Component
 var bug_list_component_1 = require('./bug-list/bug-list.component');
+//Service
+var bug_service_1 = require('./service/bug.service');
 var BugModule = (function () {
     function BugModule() {
     }
@@ -27,7 +29,9 @@ var BugModule = (function () {
                 bug_list_component_1.BugListComponent
             ],
             exports: [],
-            providers: []
+            providers: [
+                bug_service_1.BugService
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], BugModule);
