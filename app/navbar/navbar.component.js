@@ -9,25 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var bug_list_component_1 = require('./bug-list/bug-list.component');
-var BugRoutingModule = (function () {
-    function BugRoutingModule() {
+var NavbarComponent = (function () {
+    function NavbarComponent() {
     }
-    BugRoutingModule = __decorate([
-        core_1.NgModule({
-            imports: [
-                router_1.RouterModule.forChild([
-                    { path: '', redirectTo: 'bugs', pathMatch: 'prefix' },
-                    { path: 'bugs', component: bug_list_component_1.BugListComponent },
-                    { path: '**', redirectTo: 'bugs' }
-                ])
-            ],
-            exports: [router_1.RouterModule]
+    NavbarComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'navbar',
+            templateUrl: 'navbar.component.html',
+            styleUrls: ['navbar.component.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], BugRoutingModule);
-    return BugRoutingModule;
+    ], NavbarComponent);
+    return NavbarComponent;
 }());
-exports.BugRoutingModule = BugRoutingModule;
-//# sourceMappingURL=bug-routing.module.js.map
+exports.NavbarComponent = NavbarComponent;
+//# sourceMappingURL=navbar.component.js.map
