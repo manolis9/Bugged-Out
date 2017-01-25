@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
     moduleId: module.id,
     selector: 'bug-list',
     templateUrl: 'bug-list.component.html',
-    styleUrls: [ 'bug-list.component.css' ]
+    styleUrls: ['bug-list.component.css']
 })
 export class BugListComponent { }
