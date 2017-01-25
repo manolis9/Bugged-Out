@@ -17,11 +17,18 @@ var FirebaseConfigService = (function () {
         this.configureApp();
         this.configureDatabase();
     }
+    Object.defineProperty(FirebaseConfigService.prototype, "database", {
+        get: function () {
+            return this._database;
+        },
+        enumerable: true,
+        configurable: true
+    });
     FirebaseConfigService.prototype.configureApp = function () {
         firebase.initializeApp(constants_1.FIREBASE_CONFIG);
     };
     FirebaseConfigService.prototype.configureDatabase = function () {
-        this.database = firebase.database();
+        this._database = firebase.database();
     };
     FirebaseConfigService = __decorate([
         core_1.Injectable(), 
