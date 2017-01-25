@@ -16,17 +16,17 @@
                     <th>Severity</th>
                     <th>Description</th>
                     <th>Logged By</th>
-                    <th>Data</th>
+                    <th>Date</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Some Bug</td>
-                    <td>Logged</td>
-                    <td>Severe</td>
-                    <td>This bug happened</td>
-                    <td>Manolis</td>
-                    <td>25th Jan 2017</td>
+                <tr *ngFor="let bug of bugs">
+                    <td>{{ bug.title }}</td>
+                    <td>{{ bug.status }}</td>
+                    <td>{{ bug.severity }}</td>
+                    <td>{{ bug.description }}</td>
+                    <td>{{ bug.createdBy }}</td>
+                    <td>{{ bug.createdDate }}</td>
                 </tr>
             </tbody>
         </table>
