@@ -20,7 +20,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let bug of bugs" [attr.data-target]=" '#' + bugDetail.modalId " data-toggle="modal">
+                <tr *ngFor="let bug of bugs" [attr.data-target]=" '#' + bugDetail.modalId " data-toggle="modal" (click)="bugDetail.configureForm(bug)">
                     <td>{{ bug.title }}</td>
                     <td>{{ bug.status }}</td>
                     <td>{{ bug.severity }}</td>

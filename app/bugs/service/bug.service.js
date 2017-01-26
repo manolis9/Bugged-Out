@@ -21,6 +21,7 @@ var BugService = (function () {
         return Observable_1.Observable.create(function (obs) {
             _this.bugsDbRef.on('child_added', function (bug) {
                 var newBug = bug.val();
+                newBug.id = bug.key;
                 obs.next(newBug);
             }, function (err) {
                 obs.throw(err);
@@ -36,7 +37,15 @@ var BugService = (function () {
             description: bug.description,
             createdBy: 'Manolis',
             createdDate: Date.now()
-        }, function (err) { return console.error("Unable to add bug to Firebase -", err); });
+        })
+            .catch(function (err) { return console.error("Unable to add bug to Firebase -", err); });
+    };
+    BugService.prototype.updateBug = function (bug) {
+        var currentBugRef = this.bugsDbRef.child(bug.id);
+        bug.id = null;
+        bug.updatedBy = "Man";
+        bug.updatedDate = Date.now();
+        currentBugRef.update(bug);
     };
     BugService = __decorate([
         core_1.Injectable(), 
