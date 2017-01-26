@@ -31,10 +31,20 @@ export class BugDetailComponent implements OnInit {
         //     severity: new FormControl(1, Validators.required),
         //     description: new FormControl(null, Validators.required)
         // });
-        if(bug) {
-            this.currentBug = bug;
+        if (bug) {
+            this.currentBug = new Bug(
+                bug.id,
+                bug.title,
+                bug.status,
+                bug.severity,
+                bug.description,
+                bug.createdBy,
+                bug.createdDate,
+                bug.updatedBy,
+                bug.updatedDate
+            );
         }
-        
+
         this.bugForm = this.formB.group({
             title: [this.currentBug.title, [Validators.required, forbiddenStringValidator(/puppy/i)]],
             status: [this.currentBug.status, Validators.required],
@@ -44,25 +54,33 @@ export class BugDetailComponent implements OnInit {
     }
 
     submitForm() {
-        console.log(this.bugForm); //TODO: REMOVE
-        this.addBug();
-    }
-
-    addBug() {
         this.currentBug.title = this.bugForm.value["title"];
         this.currentBug.status = this.bugForm.value["status"];
         this.currentBug.severity = this.bugForm.value["severity"];
         this.currentBug.description = this.bugForm.value["description"];
-        this.BugService.addBug(this.currentBug);
+        if (this.currentBug.id) {
+            this.updateBug();
+        } else {
+            this.addBug();
+        }
         this.freshForm();
     }
 
+    addBug() {
+        this.BugService.addBug(this.currentBug);
+    }
+
+    updateBug() {
+        this.BugService.updateBug(this.currentBug);
+    }
+
     freshForm() {
-        this.bugForm.reset({status: 1, severity: 1});
+        this.bugForm.reset({ status: 1, severity: 1 });
         this.cleanBug();
     }
 
     cleanBug() {
         this.currentBug = new Bug(null, null, 1, 1, null, null, null, null, null);
     }
+
 }
