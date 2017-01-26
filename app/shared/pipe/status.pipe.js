@@ -9,28 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var common_1 = require('@angular/common');
-var status_pipe_1 = require('./pipe/status.pipe');
-var severity_pipe_1 = require('./pipe/severity.pipe');
-var SharedModule = (function () {
-    function SharedModule() {
+var constants_1 = require('../constant/constants');
+var StatusPipe = (function () {
+    function StatusPipe() {
+        this.statuses = constants_1.STATUS;
     }
-    SharedModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule],
-            declarations: [
-                status_pipe_1.StatusPipe,
-                severity_pipe_1.SeverityPipe
-            ],
-            exports: [
-                common_1.CommonModule,
-                status_pipe_1.StatusPipe,
-                severity_pipe_1.SeverityPipe
-            ]
+    StatusPipe.prototype.transform = function (statusNum) {
+        return this.statuses[statusNum];
+    };
+    StatusPipe = __decorate([
+        core_1.Pipe({
+            name: 'status'
         }), 
         __metadata('design:paramtypes', [])
-    ], SharedModule);
-    return SharedModule;
+    ], StatusPipe);
+    return StatusPipe;
 }());
-exports.SharedModule = SharedModule;
-//# sourceMappingURL=shared.module.js.map
+exports.StatusPipe = StatusPipe;
+//# sourceMappingURL=status.pipe.js.map
