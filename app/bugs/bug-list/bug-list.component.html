@@ -3,7 +3,7 @@
         <h1>Logged Bugs</h1>
     </div>
     <div class="col-xs-6 text-xs-right">
-        <button class="btn btn-success btn-lg" [attr.data-target]=" '#' + bugDetail.modalId " data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i>Add Bug</button>
+        <button class="btn btn-success btn-lg" [attr.data-target]=" '#' + bugDetail.modalId " data-toggle="modal" (click)="bugDetail.freshForm()"><i class="fa fa-plus" aria-hidden="true"></i>Add Bug</button>
     </div>
 </div>
 <div class="row">

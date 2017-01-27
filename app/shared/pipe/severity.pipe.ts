@@ -9,4 +9,5 @@ export class SeverityPipe implements PipeTransform {
     private severities = SEVERITY;
     transform(severityNum: number) {
         return this.severities[severityNum];
+    }
 }

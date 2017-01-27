@@ -12,21 +12,14 @@
                         <div class="form-group float-xs-right">
                             <label for="status-dropdown" class="sr-only">Status</label>
                             <select id="status-dropdown" class="form-control btn btn-primary" formControlName="status">
-                                <option value="1">Logged</option>
-                                <option value="2">Recreated</option>
-                                <option value="3">Progress</option>
-                                <option value="4">Fixed</option>
-                                <option value="5">Declined</option>
+                                <option *ngFor="let status of statusArr" [value]="status">{{ statuses[status] }}</option>
                             </select>
                         </div>
                     </fieldset>
                     <div class="form-group float-xs-left" id="severity-form-group">
                         <label for="severity-dropdown" class="sr-only">Severity Dropdown</label>
                         <select id="severity-dropdown" class="form-control" formControlName="severity">
-                            <option value="1">Severe</option>
-                            <option value="2">Medium</option>
-                            <option value="3">Low</option>
-                            <option value="4">Cosmetic</option>
+                            <option *ngFor="let severity of severityArr" [value]="severity">{{ severities[severity] }}</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -36,7 +29,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary btn-xl" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-success btn-xl" type="submit" data-dismiss="modal" (click)="submitForm()">Save</button>
+                    <button class="btn btn-success btn-xl" type="submit" data-dismiss="modal" (click)="submitForm()" [disabled]="bugForm.invalid">Save</button>
                 </div>
             </form>
         </div>

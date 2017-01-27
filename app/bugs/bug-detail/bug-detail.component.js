@@ -12,15 +12,22 @@ var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var bug_service_1 = require('../service/bug.service');
 var bug_1 = require('../model/bug');
+var constants_1 = require('../../shared/constant/constants');
 var forbidden_string_validator_1 = require('../../shared/validation/forbidden-string.validator');
 var BugDetailComponent = (function () {
     function BugDetailComponent(formB, BugService) {
         this.formB = formB;
         this.BugService = BugService;
         this.modalId = "bugModal";
-        this.currentBug = new bug_1.Bug(null, null, 1, 1, null, null, null, null, null);
+        this.statuses = constants_1.STATUS;
+        this.severities = constants_1.SEVERITY;
+        this.statusArr = [];
+        this.severityArr = [];
+        this.currentBug = new bug_1.Bug(null, null, this.statuses.Logged, this.severities.Severe, null, null, null, null, null);
     }
     BugDetailComponent.prototype.ngOnInit = function () {
+        this.statusArr = Object.keys(this.statuses).filter(Number);
+        this.severityArr = Object.keys(this.severities).filter(Number);
         this.configureForm();
     };
     BugDetailComponent.prototype.configureForm = function (bug) {
@@ -51,7 +58,6 @@ var BugDetailComponent = (function () {
         else {
             this.addBug();
         }
-        this.freshForm();
     };
     BugDetailComponent.prototype.addBug = function () {
         this.BugService.addBug(this.currentBug);
@@ -60,11 +66,11 @@ var BugDetailComponent = (function () {
         this.BugService.updateBug(this.currentBug);
     };
     BugDetailComponent.prototype.freshForm = function () {
-        this.bugForm.reset({ status: 1, severity: 1 });
+        this.bugForm.reset({ status: this.statuses.Logged, severity: this.severities.Severe });
         this.cleanBug();
     };
     BugDetailComponent.prototype.cleanBug = function () {
-        this.currentBug = new bug_1.Bug(null, null, 1, 1, null, null, null, null, null);
+        this.currentBug = new bug_1.Bug(null, null, this.statuses.Logged, this.severities.Severe, null, null, null, null, null);
     };
     __decorate([
         core_1.Input(), 
