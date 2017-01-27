@@ -12,6 +12,9 @@
     border: none;
     text-transform: uppercase;
 }
+#status-dropdown {
+    text-align-last: center;
+}
 #title-field,
 #severity-dropdown {
     padding: 0;
